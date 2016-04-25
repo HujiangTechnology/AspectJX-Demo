@@ -1,6 +1,6 @@
 [gradle_plugin_android_aspectjx]:https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx
 
-gradle_plugin_android_aspectjx
+AspectJX-Demo
 ==============================
 
 一个[gradle_plugin_android_aspectjx]插件的应用示例
