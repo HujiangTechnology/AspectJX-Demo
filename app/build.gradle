@@ -1,0 +1,278 @@
+import com.android.build.api.transform.Context
+import com.android.build.api.transform.DirectoryInput
+import com.android.build.api.transform.Format
+import com.android.build.api.transform.JarInput
+import com.android.build.api.transform.QualifiedContent
+import com.android.build.api.transform.Transform
+import com.android.build.api.transform.TransformException
+import com.android.build.api.transform.TransformInput
+import com.android.build.api.transform.TransformOutputProvider
+import com.android.build.gradle.internal.TaskContainerAdaptor
+import com.android.build.gradle.internal.TaskFactory
+import com.android.build.gradle.internal.pipeline.TransformManager
+import com.android.build.gradle.internal.variant.BaseVariantData
+import com.android.build.gradle.internal.variant.BaseVariantOutputData
+import com.google.common.collect.ImmutableSet
+import com.google.common.collect.Lists
+import org.apache.commons.io.FileUtils
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'android-aspectjx'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.0"
+
+    defaultConfig {
+        applicationId "com.hujiang.hujiangsdk.demo"
+        minSdkVersion 14
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            zipAlignEnabled true
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    lintOptions {
+        quiet true
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility = "1.7"
+        targetCompatibility = "1.7"
+    }
+
+//    registerTransform(new AspectTransform(project))
+//    registerTransform(new HelloTransform())
+}
+
+//afterEvaluate {
+//    android.applicationVariants.each { variant ->
+//        def dx = tasks.findByName("dex${variant.name.capitalize()}")
+//        def hello = "hello${variant.name.capitalize()}"
+//        task(hello) << {
+//            println "hello"
+//        }
+//        tasks.findByName(hello).dependsOn dx.taskDependencies.getDependencies(dx)
+//        dx.dependsOn tasks.findByName(hello)
+//    }
+//}
+
+//project.afterEvaluate {
+//    tasks.getByName("preDebugBuild") {
+//        it.doFirst {
+//
+//        }
+//    }
+//    tasks.getByName("preReleaseBuild") {
+//        it.doFirst {
+//
+//        }
+//    }
+
+//    project.android.applicationVariants.each { variant ->
+
+//        def sourceSets = new ArrayList()
+//        variant.variantData.extraGeneratedSourceFolders.each {
+//            sourceSets << it
+//            println "${it.path}:${it.exists()}"
+//        }
+//        variant.variantData.javaSources.each {
+//            if (it instanceof File) {
+//                sourceSets << it
+//                println "${it.path}:${it.exists()}"
+//            } else {
+//                it.asFileTrees.each {
+//
+//                    sourceSets << it.dir
+//                    println "${it.dir.path}:${it.dir.exists()}"
+//                }
+//            }
+//        }
+//
+//        println "++++++++++${sourceSets.join(File.pathSeparator)}"
+//
+//        println "variant.name.capitalize::${variant.name.capitalize()}"
+//        variant
+//        def transformJarTask = project.tasks.findByName("transformClassesWithJarMergingFor${variant.name.capitalize()}")
+//        if (transformJarTask) {
+//            println "transformJarMergin =====>${variant.name.capitalize()}"
+//
+//            transformJarTask.inputs.files.files.each { File file ->
+//                println "transformJarMergin inputs=====>${file.absolutePath}"
+//            }
+//
+//            transformJarTask.outputs.files.files.each { File file ->
+//                println "transformJarMergin outputs=====>${file.absolutePath}"
+//            }
+//        }
+//
+//        def transformAspectTask = project.tasks.findByName("transformClassesWithAspectTransformFor${variant.name.capitalize()}")
+//        if (transformAspectTask) {
+//            println "transformAspect========>${variant.name.capitalize()}"
+//            transformAspectTask.inputs.files.files.each { File file ->
+//                println "transformAspect inputs=====>${file.absolutePath}"
+//            }
+//
+//            transformAspectTask.outputs.files.files.each { File file ->
+//                println("transformAspect output=====>${file.absolutePath}")
+//            }
+//        }
+//
+//        def transformDexTask = project.tasks.findByName("transformClassesWithDexFor${variant.name.capitalize()}")
+//        if (transformDexTask) {
+//            println("transformDex======>${variant.name.capitalize()}")
+//            transformDexTask.inputs.files.files.each { File file ->
+//                println("transformDex inputs=====>${file.absolutePath}")
+//            }
+//            transformDexTask.outputs.files.files.each { File file ->
+//                println("transformDex outouts=====>${file.absolutePath}")
+//            }
+//        }
+//
+//        def proguardTask = project.tasks.findByName("transformClassesAndResourcesWithProguardFor${variant.name.capitalize()}")
+//        if (proguardTask) {
+//            println "proguardTransform======>${variant.name.capitalize()}"
+//
+//            proguardTask.inputs.files.files.each { File file->
+//                println "proguardTransform inputs=======>${file.absolutePath}"
+//            }
+//
+//            proguardTask.outputs.files.files.each { File file->
+//                println "proguardTransform outputs=======>${file.absolutePath}"
+//            }
+//        }
+
+//        def transformHelloTask = project.tasks.findByName("transformClassesWithHelloTransformFor${variant.name.capitalize()}")
+//        if (transformHelloTask) {
+//            println "transformHello========>${variant.name.capitalize()}"
+//            transformHelloTask.inputs.files.files.each { File file ->
+//                println "transformHello inputs=====>${file.absolutePath}"
+//            }
+//
+//            transformHelloTask.outputs.files.files.each { File file ->
+//                println("transformHello output=====>${file.absolutePath}")
+//            }
+//        }
+//    }
+//}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:22.0.0'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+//    compile 'com.hujiang.account:account:1.2.3'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
+//    compile 'com.hujiang.share:sharesdk:1.2.2'
+//    compile 'com.hujiang.restvolley:restvolley:1.0.1'
+//    compile 'com.android.support:multidex:1.0.1'
+//    compile 'com.taobao.android:dexposed:0.1.8'
+    compile project(':library')
+//    compile 'com.hujiang.common:commonlib:1.0.8'
+//    compile 'com.hujiang.hujiangsdk:hujiangsdk:0.0.1-SNAPSHOT'
+//    compile 'com.android.tools.build:transform-api:2.0.+'
+}
+
+//class AspectTransform extends Transform {
+//
+//    Project p
+//    public AspectTransform(Project project) {
+//        p = project
+//    }
+//
+//    @Override
+//    String getName() {
+//        return "AspectTransform"
+//    }
+//
+//    @Override
+//    Set<QualifiedContent.ContentType> getInputTypes() {
+//        return ImmutableSet.<QualifiedContent.ContentType>of(QualifiedContent.DefaultContentType.CLASSES)
+//    }
+//
+//    @Override
+//    Set<QualifiedContent.Scope> getScopes() {
+//        return ImmutableSet.<QualifiedContent.Scope>of(QualifiedContent.Scope.PROJECT, QualifiedContent.Scope.PROJECT_LOCAL_DEPS
+//                , QualifiedContent.Scope.EXTERNAL_LIBRARIES, com.android.build.api.transform.QualifiedContent.Scope.SUB_PROJECTS
+//                , QualifiedContent.Scope.SUB_PROJECTS_LOCAL_DEPS)
+//    }
+//
+//    @Override
+//    boolean isIncremental() {
+//        return false
+//    }
+//
+//    @Override
+//    Set<QualifiedContent.ContentType> getOutputTypes() {
+//        return super.getOutputTypes()
+//    }
+//
+//    @Override
+//    void transform(Context context, Collection<TransformInput> inputs, Collection<TransformInput> referencedInputs, TransformOutputProvider outputProvider, boolean isIncremental) throws IOException, TransformException, InterruptedException {
+//
+////        println "********************project.tasks***********"
+////        List<Task> ts = p.tasks.asList()
+////        for (Task task : ts) {
+////            println "task-name:" + task.name
+////        }
+////
+////        println "****************project.defaultTasks**************"
+////        List<String> dts = p.defaultTasks
+////        for (String t : dts) {
+////            println "default Task:" + t
+////        }
+////
+////        println "*******************endddddddddd********************"
+//
+//        println "*******************************************transform start********************************"
+//        for (TransformInput transformInput : inputs) {
+//            for (DirectoryInput directoryInput : transformInput.directoryInputs) {
+//                println "dir file*********" + directoryInput.file.absolutePath
+//
+//                File dest = outputProvider.getContentLocation(directoryInput.name, directoryInput.contentTypes, directoryInput.scopes, Format.DIRECTORY)
+//
+//                println "dest:" + dest.absolutePath
+//                FileUtils.copyDirectory(directoryInput.getFile(), dest)
+//
+//                def sourceRoots = []
+//                sourceRoots << directoryInput.file
+//                sourceRoots << dest
+//
+//                println "fileCollection:" + sourceRoots.join(File.pathSeparator)
+//            }
+//
+//            for (JarInput jarInput : transformInput.jarInputs) {
+//                println jarInput.file.absolutePath
+//
+//                String jarName = jarInput.name
+//                if (jarName.endsWith(".jar")) {
+//                    jarName = jarName.substring(0, jarName.length() - 4)
+//                }
+//
+//                File dest = outputProvider.getContentLocation(jarName, jarInput.contentTypes, jarInput.scopes, Format.JAR)
+//                println "dest:" + dest.absolutePath
+//                FileUtils.copyFile(jarInput.file, dest)
+//            }
+//
+////            final TaskFactory tasks = new TaskContainerAdaptor(project.getTasks());
+////            List<BaseVariantData<? extends BaseVariantOutputData>> variantDataList = Lists.newArrayList();
+////            TransformManager transformManager = variantScope.getTransformManager();
+//        }
+//
+//        println "*******************transform end*******************"
+//    }
+//}

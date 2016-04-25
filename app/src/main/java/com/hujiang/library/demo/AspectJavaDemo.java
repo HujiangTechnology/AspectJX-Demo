@@ -1,0 +1,53 @@
+/*
+ * AspectJavaDemo      2016-03-09
+ * Copyright (c) 2016 hujiang Co.Ltd. All right reserved(http://www.hujiang.com).
+ * 
+ */
+
+package com.hujiang.library.demo;
+
+import android.util.Log;
+
+//import com.taobao.android.dexposed.DexposedBridge;
+//import com.taobao.android.dexposed.XC_MethodHook;
+
+/**
+ * class description here
+ *
+ * @author simon
+ * @version 1.0.0
+ * @since 2016-03-09
+ */
+public class AspectJavaDemo {
+
+    public void work() {
+        Log.i("helloAOP", "AspectJavaDemo.work");
+
+        //dexposed
+//        DexposedBridge.findAndHookMethod(Activity.class, "onCreate", Bundle.class, new XC_MethodHook() {
+//            @Override
+//            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+//                super.beforeHookedMethod(param);
+//            }
+//
+//            @Override
+//            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+//                super.afterHookedMethod(param);
+//                Log.i("helloAOP", "dexposed--activity--onCreate:" + param.thisObject.toString() + ":" + param.method.getName());
+//            }
+//        });
+//
+//        DexposedBridge.findAndHookMethod(Greeter.class, "greet", new XC_MethodHook() {
+//            @Override
+//            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+//                super.beforeHookedMethod(param);
+//            }
+//
+//            @Override
+//            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+//                super.afterHookedMethod(param);
+//                Log.i("helloAOP", "dexposed--Greeter--greet:" + param.method.getName());
+//            }
+//        });
+    }
+}
