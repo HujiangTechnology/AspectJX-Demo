@@ -3,9 +3,6 @@ package com.hujiang.library.demo
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageView
-import com.nostra13.universalimageloader.core.ImageLoader
-import org.aspectj.lang.Aspects
 
 open class MainActivity : Activity() {
 

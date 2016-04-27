@@ -8,15 +8,16 @@ package com.hujiang.library.demo;
 
 import android.app.Application;
 import android.content.Context;
-//import android.support.multidex.MultiDex;
-//import android.support.multidex.MultiDex;
 
-//import com.hujiang.account.AccountRunTime;
-//import com.hujiang.framework.app.RunTimeManager;
-//import com.hujiang.social.sdk.SocialSDK;
 import com.hujiang.library.LibrarySDK;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
+//import android.support.multidex.MultiDex;
+//import android.support.multidex.MultiDex;
+//import com.hujiang.account.AccountRunTime;
+//import com.hujiang.framework.app.RunTimeManager;
+//import com.hujiang.social.sdk.SocialSDK;
 
 //import com.taobao.android.dexposed.DexposedBridge
 //import com.taobao.android.dexposed.XC_MethodHook
@@ -44,7 +45,5 @@ public class DemoApplication extends Application {
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-
-//        MultiDex.install(this);
     }
 }

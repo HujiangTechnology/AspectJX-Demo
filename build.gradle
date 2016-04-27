@@ -5,37 +5,21 @@ buildscript {
     repositories {
         mavenLocal()
 
-        maven {
-            url nexus_public
-        }
-
         jcenter()
     }
 
     dependencies {
-        classpath fileTree(dir:'plugins', include:['*.jar'])
+//        classpath fileTree(dir:'plugins', include:['*.jar'])
+        classpath 'com.hujiang.gradle.plugin.android:aspectjx:1.0.0'
         classpath 'com.android.tools.build:gradle:2.+'
-//        classpath 'com.uphyca.gradle:gradle-android-aspectj-plugin:0.9.14'
-//        classpath 'com.hujiang:android_aspectj:0.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'org.aspectj:aspectjtools:1.8.+'
-//        classpath 'com.android.tools.build:transform-api:2.0.+'
-//        classpath 'org.aspectj:aspectjweaver:1.8.+'
-//        classpath 'org.aspectj:aspectjrt:1.8.+'
-//        classpath 'org.aspectj:aspectjlib:1.+'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 
 allprojects {
     repositories {
         mavenLocal()
-
-        maven {
-            url nexus_public
-        }
 
         jcenter()
     }

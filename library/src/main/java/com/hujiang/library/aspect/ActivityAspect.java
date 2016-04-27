@@ -8,12 +8,12 @@ package com.hujiang.library.aspect;
 
 import android.util.Log;
 
-//import com.hujiang.common.util.ToastUtils;
-//import com.hujiang.framework.app.RunTimeManager;
-
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
+
+//import com.hujiang.common.util.ToastUtils;
+//import com.hujiang.framework.app.RunTimeManager;
 
 /**
  * activity aspect
@@ -70,7 +70,6 @@ public class ActivityAspect {
     @After("execution(* android.support.v4.app.Fragment.on**(..))")
     public void fragmentMethod(JoinPoint joinPoint) throws Throwable {
         Log.i("helloAOP", "aspect:::" + joinPoint.getSignature());
-//        DemoApplication.writeAOPLog("" + joinPoint.getSignature());
     }
 
     @After("call(* com.hujiang.library.demo.AspectJavaDemo.work())")

@@ -22,32 +22,5 @@ public class AspectJavaDemo {
 
     public void work() {
         Log.i("helloAOP", "AspectJavaDemo.work");
-
-        //dexposed
-//        DexposedBridge.findAndHookMethod(Activity.class, "onCreate", Bundle.class, new XC_MethodHook() {
-//            @Override
-//            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-//                super.beforeHookedMethod(param);
-//            }
-//
-//            @Override
-//            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-//                super.afterHookedMethod(param);
-//                Log.i("helloAOP", "dexposed--activity--onCreate:" + param.thisObject.toString() + ":" + param.method.getName());
-//            }
-//        });
-//
-//        DexposedBridge.findAndHookMethod(Greeter.class, "greet", new XC_MethodHook() {
-//            @Override
-//            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-//                super.beforeHookedMethod(param);
-//            }
-//
-//            @Override
-//            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-//                super.afterHookedMethod(param);
-//                Log.i("helloAOP", "dexposed--Greeter--greet:" + param.method.getName());
-//            }
-//        });
     }
 }
