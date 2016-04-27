@@ -13,7 +13,6 @@ buildscript {
         classpath 'com.hujiang.gradle.plugin.android:aspectjx:1.0.0'
         classpath 'com.android.tools.build:gradle:2.+'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'org.aspectj:aspectjtools:1.8.+'
     }
 }
 
