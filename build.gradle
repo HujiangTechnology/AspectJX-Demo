@@ -10,7 +10,7 @@ buildscript {
 
     dependencies {
 //        classpath fileTree(dir:'plugins', include:['*.jar'])
-        classpath 'com.hujiang.gradle.plugin.android:aspectjx:1.0.0'
+        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:1.0.1'
         classpath 'com.android.tools.build:gradle:2.+'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
