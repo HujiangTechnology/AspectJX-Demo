@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "22.0.0"
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         minSdkVersion 14
@@ -27,7 +27,7 @@ dependencies {
 //    compile fileTree(dir: 'libs', include: ['*.jar'])
 
     compile 'com.android.support:appcompat-v7:22.0.0'
-    compile 'org.tukaani:xz:1.5'
+//    compile 'org.tukaani:xz:1.5'
 //    compile 'com.hujiang.account:account:1.2.2'
 //    compile 'com.hujiang.share:sharesdk:1.2.0'
 //    compile 'com.hujiang.common:commonlib:1.0.8-SNAPSHOT'

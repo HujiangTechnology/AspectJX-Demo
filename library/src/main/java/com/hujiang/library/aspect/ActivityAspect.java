@@ -9,7 +9,9 @@ package com.hujiang.library.aspect;
 import android.util.Log;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 
 //import com.hujiang.common.util.ToastUtils;
@@ -85,5 +87,12 @@ public class ActivityAspect {
     @After("execution(* com.hujiang.library.demo.NormalClass.**(..))")
     public void aspectNormalClass(JoinPoint joinPoint) throws Throwable {
         Log.i("helloAOP", "aspect:::" + joinPoint.getSignature());
+    }
+
+    @Around("execution( * com.hujiang.library.demo.AOPActivity.onCreate(..))")
+    public void aopActivityAdvice(ProceedingJoinPoint joinPoint) throws Throwable {
+        joinPoint.proceed();
+
+        Log.i("helloAOP", "aspect:::" + "------------>>>>>AOPActivity.onCreate");
     }
 }
