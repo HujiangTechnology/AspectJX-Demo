@@ -24,23 +24,7 @@ android {
 }
 
 dependencies {
-//    compile fileTree(dir: 'libs', include: ['*.jar'])
-
     compile 'com.android.support:appcompat-v7:22.0.0'
-//    compile 'org.tukaani:xz:1.5'
-//    compile 'com.hujiang.account:account:1.2.2'
-//    compile 'com.hujiang.share:sharesdk:1.2.0'
-//    compile 'com.hujiang.common:commonlib:1.0.8-SNAPSHOT'
-//    compile 'com.hujiang.framework:hjframework:1.1.4-SNAPSHOT'
-//    compile 'com.hujiang.download:downloadengine:1.0.9'
-//    compile 'com.hujiang.bisdk:bisdk:3.0.4-SNAPSHOT'
-//    compile 'com.hujiang.upgrade:upgradesdk:2.0.0'
-
-//    compile 'org.aspectj:aspectjtools:1.8.+'
-//    compile 'org.aspectj:aspectjweaver:1.8.+'
-//    compile 'org.aspectj:aspectjrt:1.8.+'
-//    compile 'org.aspectj:aspectjlib:1.+'
-
     testCompile 'junit:junit:4.12'
     compile 'org.aspectj:aspectjrt:1.8.+'
 }

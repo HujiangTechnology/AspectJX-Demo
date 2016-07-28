@@ -1,11 +1,13 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.0.0'
+    ext.kotlin_version = '1.0.3'
     repositories {
         mavenLocal()
 
-        jcenter()
+        jcenter() {
+            url 'http://jcenter.bintray.com/'
+        }
     }
 
     dependencies {
