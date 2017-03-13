@@ -1,4 +1,4 @@
-package com.hujiang.library;
+package com.hujiang.library.demo;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

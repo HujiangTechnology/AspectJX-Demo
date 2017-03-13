@@ -4,26 +4,32 @@ buildscript {
     ext.kotlin_version = '1.0.3'
     repositories {
         mavenLocal()
-
+        maven {
+            url 'http://cms.m.hujiang.com:8081/nexus/content/groups/public'
+        }
         jcenter() {
             url 'http://jcenter.bintray.com/'
         }
     }
 
     dependencies {
-//        classpath fileTree(dir:'plugins', include:['*.jar'])
-        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:1.0.8'
-        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath fileTree(dir:'plugins', include:['*.jar'])
+//        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:1.0.9-SNAPSHOT'
+        classpath 'com.android.tools.build:gradle:2.2.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-//        classpath 'org.aspectj:aspectjtools:1.8.+'
+        classpath 'org.aspectj:aspectjtools:1.8.9'
     }
 }
 
 allprojects {
     repositories {
         mavenLocal()
-
-        jcenter()
+        maven {
+            url 'http://cms.m.hujiang.com:8081/nexus/content/groups/public'
+        }
+        jcenter() {
+            url 'http://jcenter.bintray.com'
+        }
     }
 
     configurations.all {

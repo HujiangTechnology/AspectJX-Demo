@@ -1,4 +1,4 @@
-package com.hujiang.library;
+package com.hujiang.library.demo;
 
 import org.junit.Test;
 

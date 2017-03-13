@@ -4,15 +4,17 @@ apply plugin: 'android-aspectjx'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    buildToolsVersion "22.0.0"
 
     defaultConfig {
-        applicationId "com.hujiang.hujiangsdk.demo"
+        applicationId "com.hujiang.library.demo"
         minSdkVersion 14
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -25,6 +27,11 @@ android {
     }
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+        test {
+            java.srcDirs = ['src/test/java']
+            resources.srcDirs = ['src/test/resources']
+        }
+        androidTest.setRoot('src/androidTest')
     }
 
     lintOptions {
@@ -42,17 +49,21 @@ android {
 
 aspectjx {
     //指定只对含有关键字'universal-image-loader', 'AspectJX-Demo/library'的库进行织入扫描，忽略其他库，提升编译效率
-    includeJarFilter 'universal-image-loader', 'AspectJX-Demo/library'
-    excludeJarFilter 'universal-image-loader'
+//    includeJarFilter 'universal-image-loader', 'AspectJX-Demo/library'
+//    excludeJarFilter '.jar'
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.0.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
-
     compile project(':library')
+    compile 'com.android.support.test:runner:0.5'
+
     testCompile 'junit:junit:4.12'
+
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
 }
