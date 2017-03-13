@@ -43,6 +43,15 @@ android {
         sourceCompatibility = "1.7"
         targetCompatibility = "1.7"
     }
+
+    productFlavors {
+        p1 {
+            applicationId 'com.hujiang.library.demo1'
+        }
+        p2 {
+            applicationId 'com.hujiang.library.demo2'
+        }
+    }
 }
 
 
