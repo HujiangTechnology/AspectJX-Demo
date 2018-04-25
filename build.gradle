@@ -1,11 +1,11 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.0.3'
+    ext.kotlin_version = '1.1.4'
     repositories {
         mavenLocal()
         maven {
-            url 'http://cms.m.hujiang.com:8081/nexus/content/groups/public'
+            url 'https://dl.google.com/dl/android/maven2/'
         }
         jcenter() {
             url 'http://jcenter.bintray.com/'
@@ -13,11 +13,9 @@ buildscript {
     }
 
     dependencies {
-//        classpath fileTree(dir:'plugins', include:['*.jar'])
-        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:1.0.10'
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.0'
+        classpath 'com.android.tools.build:gradle:3.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'org.aspectj:aspectjtools:1.8.9'
     }
 }
 
@@ -25,7 +23,7 @@ allprojects {
     repositories {
         mavenLocal()
         maven {
-            url 'http://cms.m.hujiang.com:8081/nexus/content/groups/public'
+            url 'https://dl.google.com/dl/android/maven2/'
         }
         jcenter() {
             url 'http://jcenter.bintray.com'

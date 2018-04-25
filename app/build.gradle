@@ -4,7 +4,7 @@ apply plugin: 'android-aspectjx'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "22.0.0"
+    buildToolsVersion "26.0.2"
 
     defaultConfig {
         applicationId "com.hujiang.library.demo"
@@ -44,35 +44,36 @@ android {
         targetCompatibility = "1.7"
     }
 
+    flavorDimensions 'channel'
     productFlavors {
-        p1 {
-            applicationId 'com.hujiang.library.demo1'
+        demo1 {
+            dimension 'channel'
         }
-        p2 {
-            applicationId 'com.hujiang.library.demo2'
+        demo2 {
+            dimension 'channel'
         }
     }
 }
-
 
 
 aspectjx {
     //指定只对含有关键字'universal-image-loader', 'AspectJX-Demo/library'的库进行织入扫描，忽略其他库，提升编译效率
 //    includeJarFilter 'universal-image-loader', 'AspectJX-Demo/library'
 //    excludeJarFilter '.jar'
+//    ajcArgs '-Xlint:warning'
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:22.0.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
     compile project(':library')
-    compile 'com.android.support.test:runner:0.5'
 
-    testCompile 'junit:junit:4.12'
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile 'com.android.support:appcompat-v7:22.0.0'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
+    compile 'com.android.support.test:runner:0.5'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+    testCompile 'junit:junit:4.12'
 }

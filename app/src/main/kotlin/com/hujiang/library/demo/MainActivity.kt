@@ -10,6 +10,7 @@ open class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        findViewById(R.id.aop_ability).setOnClickListener { startActivity(Intent(this@MainActivity, AOPAbilityActivity::class.java)) }
         findViewById(R.id.aop_activity).setOnClickListener {
             startActivity(Intent(this@MainActivity, AOPActivity::class.java)) }
         findViewById(R.id.aop_fragment).setOnClickListener {

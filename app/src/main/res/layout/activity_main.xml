@@ -17,6 +17,11 @@
         android:text="Hello World!"/>
 
     <Button
+        android:id="@+id/aop_ability"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AOP能力"/>
+    <Button
         android:id="@+id/aop_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
