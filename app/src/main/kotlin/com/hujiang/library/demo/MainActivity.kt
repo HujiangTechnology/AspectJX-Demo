@@ -3,7 +3,9 @@ package com.hujiang.library.demo
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import com.hujiang.library.aspect.TraceDelay
 
+@TraceDelay
 open class MainActivity : Activity() {
 
     open override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +28,7 @@ open class MainActivity : Activity() {
 //        ImageLoader.getInstance().displayImage("http://cichang.hujiang.com/images/friendquan_share.png", img)
     }
 
+    @TraceDelay()
     override fun onResume() {
         super.onResume()
     }

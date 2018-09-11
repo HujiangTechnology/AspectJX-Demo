@@ -6,11 +6,13 @@
 
 package com.hujiang.library.aspect;
 
+import android.support.annotation.AnimRes;
 import android.util.Log;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 
@@ -57,6 +59,15 @@ public class ActivityAspect {
 //
 //    }
 
+    /**
+     *
+     * @param joinPoint
+     * @throws Throwable
+     */
+    @After("within(@com.hujiang.library.aspect.TraceDelay *)")
+    public void onUi(JoinPoint joinPoint) throws Throwable {
+        Log.i("helloAOP", "" + joinPoint.getSignature());
+    }
 
     @After("execution(* android.app.Activity.on**(..))")
     public void onResumeMethod(JoinPoint joinPoint) throws Throwable {
