@@ -17,9 +17,9 @@ import org.aspectj.lang.annotation.Before;
 /**
  * class description here
  *
- * @author simon
+ * @author Elad Ben David
  * @version 1.0.0
- * @since 2016-03-04
+ * @since 2018-09-13
  */
 @Aspect
 public class ViewClickAspect {
