@@ -9,6 +9,7 @@ package com.hujiang.library.demo;
 import android.app.Application;
 import android.content.Context;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.hujiang.library.LibrarySDK;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -40,6 +41,10 @@ public class DemoApplication extends Application {
         LibrarySDK.init();
 
         ImageLoader.getInstance().init(new ImageLoaderConfiguration.Builder(this).build());
+
+        ARouter.openLog();
+        ARouter.openDebug();
+        ARouter.init(this);
     }
 
     @Override

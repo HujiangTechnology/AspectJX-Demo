@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
@@ -18,6 +19,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
  * @version 1.0.0
  * @since 2016-03-28
  */
+@Route(path = "/com/AOPActivity")
 public class AOPActivity extends Activity {
 
     @Override

@@ -3,6 +3,7 @@ package com.hujiang.library.demo
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import com.alibaba.android.arouter.launcher.ARouter
 import com.hujiang.library.aspect.TraceDelay
 
 @TraceDelay
@@ -22,10 +23,14 @@ open class MainActivity : Activity() {
         findViewById(R.id.aop_normal_class).setOnClickListener {
             NormalClass("normalClass").work() }
 
+        findViewById(R.id.router_btn).setOnClickListener {
+            ARouter.getInstance().build("/com/AOPActivity").navigation()
+        }
 //        var img : ImageView = findViewById(R.id.img_t) as ImageView
 
         //http://cichang.hujiang.com/images/friendquan_share.png
 //        ImageLoader.getInstance().displayImage("http://cichang.hujiang.com/images/friendquan_share.png", img)
+
     }
 
     @TraceDelay()
