@@ -3,6 +3,7 @@ package com.hujiang.library.demo
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import com.alibaba.android.arouter.launcher.ARouter
 import com.hujiang.library.aspect.TraceDelay
 
@@ -13,17 +14,17 @@ open class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findViewById(R.id.aop_ability).setOnClickListener { startActivity(Intent(this@MainActivity, AOPAbilityActivity::class.java)) }
-        findViewById(R.id.aop_activity).setOnClickListener {
+        findViewById<View>(R.id.aop_ability).setOnClickListener { startActivity(Intent(this@MainActivity, AOPAbilityActivity::class.java)) }
+        findViewById<View>(R.id.aop_activity).setOnClickListener {
             startActivity(Intent(this@MainActivity, AOPActivity::class.java)) }
-        findViewById(R.id.aop_fragment).setOnClickListener {
+        findViewById<View>(R.id.aop_fragment).setOnClickListener {
             startActivity(Intent(this@MainActivity, FragmentActivity::class.java)) }
-        findViewById(R.id.aop_kotlin).setOnClickListener {
+        findViewById<View>(R.id.aop_kotlin).setOnClickListener {
             Greeter().greet() }
-        findViewById(R.id.aop_normal_class).setOnClickListener {
+        findViewById<View>(R.id.aop_normal_class).setOnClickListener {
             NormalClass("normalClass").work() }
 
-        findViewById(R.id.router_btn).setOnClickListener {
+        findViewById<View>(R.id.router_btn).setOnClickListener {
             ARouter.getInstance().build("/com/AOPActivity").navigation()
         }
 //        var img : ImageView = findViewById(R.id.img_t) as ImageView
