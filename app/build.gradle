@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'android-aspectjx'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
-    buildToolsVersion "28.0.2"
 
     defaultConfig {
         applicationId "com.hujiang.library.demo"
@@ -83,7 +83,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
 
     implementation 'com.alibaba:arouter-api:1.4.0'
-    annotationProcessor 'com.alibaba:arouter-compiler:1.1.2.1'
+    kapt 'com.alibaba:arouter-compiler:1.1.2.1'
 
     testImplementation 'junit:junit:4.12'
 }
